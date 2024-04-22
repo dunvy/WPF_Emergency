@@ -11,6 +11,9 @@
         <Button x:Name="start" Content="녹음시작" HorizontalAlignment="Left" Margin="81,0,0,0" VerticalAlignment="Center" Height="74" Width="153" Click="Button_Click"/>
         <Button x:Name="stop" Content="녹음정지" HorizontalAlignment="Left" Margin="311,0,0,0" VerticalAlignment="Center" Height="74" Width="153" Click="Button_Click_1"/>
         <Button Content="데이터 전송" HorizontalAlignment="Left" Margin="529,180,0,0" VerticalAlignment="Top" Height="72" Width="183" Click="Button_Click_2"/>
+        <Button Content="데시벨" HorizontalAlignment="Left" Margin="438,304,0,0" VerticalAlignment="Top" Height="72" Width="182" Click="Button_Click_3"/>
+        <Label x:Name="decibel" Content="데시벨이 뜰거에오" HorizontalAlignment="Left" Margin="81,304,0,0" VerticalAlignment="Top" Width="263"/>
+        <Label x:Name="decibelOk" Content="특정값 뚫어따" HorizontalAlignment="Left" Margin="81,340,0,0" VerticalAlignment="Top" Width="263"/>
 
     </Grid>
 </Window>
