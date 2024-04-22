@@ -1339,19 +1339,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\iot\\.nuget\\packages\\": {}
+    "C:\\Users\\fbi54\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\iot\\source\\repos\\WPFEmergency\\emergencyclnt\\emergencyclnt.csproj",
+      "projectUniqueName": "C:\\Users\\fbi54\\OneDrive\\바탕 화면\\projectemergency\\emergencyclnt\\emergencyclnt.csproj",
       "projectName": "emergencyclnt",
-      "projectPath": "C:\\Users\\iot\\source\\repos\\WPFEmergency\\emergencyclnt\\emergencyclnt.csproj",
-      "packagesPath": "C:\\Users\\iot\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\iot\\source\\repos\\WPFEmergency\\emergencyclnt\\obj\\",
+      "projectPath": "C:\\Users\\fbi54\\OneDrive\\바탕 화면\\projectemergency\\emergencyclnt\\emergencyclnt.csproj",
+      "packagesPath": "C:\\Users\\fbi54\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\fbi54\\OneDrive\\바탕 화면\\projectemergency\\emergencyclnt\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\iot\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\fbi54\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1422,7 +1422,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

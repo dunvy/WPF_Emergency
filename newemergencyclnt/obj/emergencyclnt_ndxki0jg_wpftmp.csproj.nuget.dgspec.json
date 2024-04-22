@@ -1,0 +1,93 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\fbi54\\OneDrive\\바탕 화면\\projectemergency\\emergencyclnt\\emergencyclnt.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\fbi54\\OneDrive\\바탕 화면\\projectemergency\\emergencyclnt\\emergencyclnt.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\fbi54\\OneDrive\\바탕 화면\\projectemergency\\emergencyclnt\\emergencyclnt.csproj",
+        "projectName": "emergencyclnt",
+        "projectPath": "C:\\Users\\fbi54\\OneDrive\\바탕 화면\\projectemergency\\emergencyclnt\\emergencyclnt.csproj",
+        "packagesPath": "C:\\Users\\fbi54\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\fbi54\\OneDrive\\바탕 화면\\projectemergency\\emergencyclnt\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\fbi54\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "dependencies": {
+            "Microsoft.CognitiveServices.Speech": {
+              "target": "Package",
+              "version": "[1.37.0, )"
+            },
+            "NAudio": {
+              "target": "Package",
+              "version": "[2.2.1, )"
+            },
+            "NAudio.Core": {
+              "target": "Package",
+              "version": "[2.2.1, )"
+            },
+            "NAudio.Vorbis": {
+              "target": "Package",
+              "version": "[1.5.0, )"
+            },
+            "System.Speech": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
