@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "F3MK9sH9M2R7xFpWKveUbiUeShZRN/+5+9hLz/pdiAlqDPqO2zku9rsRGQVHEfm1ysb6t714IkwDXiVxKfsF0A==",
+  "dgSpecHash": "flJySXX5sIReeJCn+cTQ3j27TOmvIYLmTU2EN1/V/F13IyxhNMxulTcj3Hp3WXg3HOz/em2ToRWAqQ5dwBe/YQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\AIOT1\\Desktop\\emergency\\newemergencyclnt\\emergencyclnt.csproj",
+  "projectFilePath": "C:\\Users\\AIOT1\\Desktop\\emergency\\emergencyclnt\\emergencyclnt.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\AIOT1\\.nuget\\packages\\microsoft.cognitiveservices.speech\\1.37.0\\microsoft.cognitiveservices.speech.1.37.0.nupkg.sha512",
     "C:\\Users\\AIOT1\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",

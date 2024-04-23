@@ -31,12 +31,14 @@ namespace emergencyclnt
         public NetworkStream stream;
 
         public WaveIn wavesource = null;
+        public WaveIn wavesource1 = null;
         public WaveFileWriter wavefile = null;
         public WaveFileReader sendfile = null;
 
         public MainWindow()
         {
             InitializeComponent();
+            
             recogmic();
             //ConncectToServer();
             label.Content = "음성녹음입니다.";
@@ -44,54 +46,83 @@ namespace emergencyclnt
         }
         public async Task recogmic()
         {
-            //MessageBox.Show("dl?");
+            int bytesPerSample = 2;
 
-            await Task.Run(async () =>
-            {
-                MMDeviceEnumerator enumerator = new MMDeviceEnumerator();
-                MMDeviceCollection devicecoll = enumerator.EnumerateAudioEndPoints(DataFlow.Capture, DeviceState.Active);
-                MMDevice device = devicecoll[0];
-                MessageBox.Show(device.FriendlyName);
-
-                while (true)
-                {
-                    double value = device.AudioMeterInformation.MasterPeakValue/32768;
-                    int deci = Convert.ToInt32(20 * Math.Log10(value));
-                    Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate
-                    {
-                        Decibel.Content = deci.ToString();
-                        if (deci == 0)
-                        {
-                            realtimerecord();
-                        }
-                    }));
-                }
-            });
-            MessageBox.Show("dp?");
-
-        }
-        private async void realtimerecord()
-        {
-            MessageBox.Show("음성녹음을 시작합니다.");
             wavesource = new WaveIn();
             wavesource.WaveFormat = new WaveFormat(16000, 1);
+            wavesource.BufferMilliseconds = (int)((double)1024 / (16000 / 1000.0));
+            wavesource.DeviceNumber = 0; // 마이크 장치 번호
 
-            wavesource.DataAvailable += new EventHandler<WaveInEventArgs>(waveSource_DataAvailable);
-            wavesource.RecordingStopped += new EventHandler<StoppedEventArgs>(waveSource_RecordingStopped);
+            // 데이터가 들어오면 호출할 이벤트 핸들러
+            wavesource.DataAvailable += (sender, e) =>
+            {
+                byte[] buffer = e.Buffer;
+                double sum = 0;
 
-            wavefile = new WaveFileWriter("C:\\Users\\fbi54\\foremergency\\test.wav", wavesource.WaveFormat);
+                // 각 샘플을 16비트 signed로 변환하여 루프 돌며 절대값 합을 구합니다.
+                for (int i = 0; i < e.BytesRecorded; i += bytesPerSample)
+                {
+                    short sample = (short)((buffer[i + 1] << 8) | buffer[i]);
+                    sum += Math.Abs(sample);
+                }
 
-            wavesource.StartRecording();
-            realtimerecordstop();
+                // 루프 종료 후 평균값 계산
+                double average = sum / (e.BytesRecorded / bytesPerSample);
+
+                // 평균값을 데시벨로 변환
+                double decibels = 20 * Math.Log10(average);
+
+                Decibel.Content = decibels;
+                if (decibels > 70)
+                {
+                    realtimerecord();
+                }
+
+            };
+            try
+            {
+                wavesource.StartRecording();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
+        int ak = -1;
+        List<WaveIn> wave = new List<WaveIn>();
+        private async void realtimerecord()
+        {
+
+            //MessageBox.Show("음성녹음을 시작합니다.");
+            await Task.Run(async () =>
+            {
+                //wavesource1 = new WaveIn();
+                //wavesource1.WaveFormat = new WaveFormat(16000, 1);
+                ak++;
+                wavesource.DataAvailable += new EventHandler<WaveInEventArgs>(waveSource_DataAvailable);
+                wavesource.RecordingStopped += new EventHandler<StoppedEventArgs>(waveSource_RecordingStopped);
+                wave.Add(wavesource);
+                //wavefile = new WaveFileWriter("C:\\Users\\AIOT1\\Desktop\\fuxkfuxkfuxk\\ak" + ak+".wav", wavesource.WaveFormat);
+                wavefile = new WaveFileWriter("C:\\Users\\AIOT1\\Desktop\\fuxkfuxkfuxk\\ak" + ak + ".wav", wave[ak].WaveFormat);
+                
+                wave[ak].StartRecording();
+                
+                realtimerecordstop();
+            });
+
+        }
+        int ss = 0;
         private async void realtimerecordstop()
         {
+            
             await Task.Run(async () =>
             {
                 Thread.Sleep(10000);
             });
-            wavesource.StopRecording();
-            MessageBox.Show("끝나뗘");
+            //wavesource.StopRecording();
+            wave[ss].StopRecording();
+            ss++;
+            //MessageBox.Show("끝남");
         }
         public async Task ConncectToServer() // 서버 연결 함수
         {

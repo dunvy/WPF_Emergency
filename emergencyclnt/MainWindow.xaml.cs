@@ -11,15 +11,23 @@ using System.Windows.Shapes;
 
 using System;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Net.Sockets;
 
 using NAudio.Wave;
 using System.IO;
 using System.Runtime.InteropServices;
 using NAudio.Wave.Compression;
+<<<<<<< Updated upstream
 using System.Threading.Channels;
 using NAudio.Utils;
 using NAudio.CoreAudioApi;
+=======
+using NAudio.CoreAudioApi;
+using NAudio.Wave.SampleProviders;
+using System.Windows.Threading;
+
+>>>>>>> Stashed changes
 
 namespace emergencyclnt
 {
@@ -30,8 +38,10 @@ namespace emergencyclnt
         public TcpClient clnt;
         public NetworkStream stream;
 
+        public WaveIn micsource = null;
         public WaveIn wavesource = null;
         public WaveFileWriter wavefile = null;
+        public WaveFileWriter wavefile1 = null;
         public WaveFileReader sendfile = null;
 
         public MainWindow()
@@ -39,10 +49,35 @@ namespace emergencyclnt
             InitializeComponent();
             //ConncectToServer();
             label.Content = "음성녹음입니다.";
+<<<<<<< Updated upstream
             MMDeviceEnumerator en = new MMDeviceEnumerator();
             var devices = en.EnumerateAudioEndPoints(DataFlow.All, DeviceState.Active);
-        }
+=======
+            recogmic();
 
+>>>>>>> Stashed changes
+        }
+        public async Task recogmic()
+        {
+            MessageBox.Show("dl?");
+            
+            await Task.Run(async ()=>
+            {
+                MMDeviceEnumerator enumerator = new MMDeviceEnumerator();
+                MMDevice device = (MMDevice)enumerator.GetDefaultAudioEndpoint(DataFlow.Capture, Role.Multimedia);
+                while (true)
+                {
+                    double value = device.AudioMeterInformation.MasterPeakValue;
+                    int deci = (int)Math.Floor(value * 79);
+                    Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate
+                    {
+                        Decibel.Content = deci.ToString();
+                    }));
+                }
+            });
+            MessageBox.Show("dp?");
+            
+        }
         public async Task ConncectToServer() // 서버 연결 함수
         {
             try
@@ -60,20 +95,20 @@ namespace emergencyclnt
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             // 레코딩 시작
-            label.Content = "음성녹음을 시작합니다.";
+            label.Content = "음성감지를 시작합니다.";
 
             start.IsEnabled = false;
             stop.IsEnabled = true;
+            
+            //wavesource = new WaveIn();
+            //wavesource.WaveFormat = new WaveFormat(16000, 1);
+            //wavesource.DataAvailable += new EventHandler<WaveInEventArgs>(waveSource_DataAvailable);
+            //wavesource.RecordingStopped += new EventHandler<StoppedEventArgs>(waveSource_RecordingStopped);
 
-            wavesource = new WaveIn();
-            wavesource.WaveFormat = new WaveFormat(16000, 1);
+            //wavefile = new WaveFileWriter("C:\\Users\\AIOT1\\Desktop\\fuxkfuxkfuxk\\test.wav", wavesource.WaveFormat);
+            ////wavefile1 = new WaveFileWriter("C:\\Users\\AIOT1\\Desktop\\fuxkfuxkfuxk\\test1.wav", micsource.WaveFormat);
 
-            wavesource.DataAvailable += new EventHandler<WaveInEventArgs>(waveSource_DataAvailable);
-            wavesource.RecordingStopped += new EventHandler<StoppedEventArgs>(waveSource_RecordingStopped);
-
-            wavefile = new WaveFileWriter("C:\\Users\\iot\\source\\repos\\WPFEmergency\\voice\\test.wav", wavesource.WaveFormat);
-
-            wavesource.StartRecording();
+            //wavesource.StartRecording();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -82,7 +117,17 @@ namespace emergencyclnt
             label.Content = "음성녹음을 종료합니다.";
 
             stop.IsEnabled = false;
-
+            //micsource.StopRecording();
+            wavesource.StopRecording();
+        }
+        private void recordstart()
+        {
+            label.Content = "음성녹음을 종료합니다.";
+            wavesource.StartRecording();
+        }
+        private void recordstop()
+        {
+            label.Content = "음성녹음을 종료합니다.";
             wavesource.StopRecording();
         }
 
@@ -91,9 +136,20 @@ namespace emergencyclnt
             if (wavefile != null)
             {
                 wavefile.Write(e.Buffer, 0, e.BytesRecorded);
+                
+                Decibel.Content = "q";
                 wavefile.Flush();
+                
             }
         }
+        //void waveSource_DataAvailable1(object sender, WaveInEventArgs e)
+        //{
+        //    if (wavefile1 != null)
+        //    {
+        //        wavefile1.Write(e.Buffer, 0, e.BytesRecorded);
+        //        wavefile1.Flush();
+        //    }
+        //}
 
         void waveSource_RecordingStopped(object sender, StoppedEventArgs e)
         {
@@ -114,7 +170,7 @@ namespace emergencyclnt
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            string waveFilePath = "C:\\Users\\iot\\source\\repos\\WPFEmergency\\voice\\test.wav";
+            string waveFilePath = "C:\\Users\\AIOT1\\Desktop\\fuxkfuxkfuxk\\test0.wav";
 
             using(FileStream fs = new FileStream(waveFilePath, FileMode.Open, FileAccess.Read))
             {
@@ -128,10 +184,19 @@ namespace emergencyclnt
                 // 파일 전송
                 byte[] buffer = new byte[size];
                 int bytesRead;
-                while ((bytesRead = fs.Read(buffer, 0, buffer.Length)) > 0)
-                {
-                    stream.Write(buffer, 0, bytesRead);
-                }
+                
+                //while ((bytesRead = fs.Read(buffer, 0, buffer.Length)) > 0)
+                //{
+                //    stream.Write(buffer, 0, bytesRead);
+                //}
+                //for (int i = 0; i < buffer.Length / 8; i++)
+                //{
+                    
+                double sample = BitConverter.ToDouble(buffer, 4);
+                double volume = Math.Abs(sample / 32768.0);
+                double decibels = 20 * Math.Log10(volume);
+                Decibel.Content = decibels.ToString();
+                //}
             }
         }
 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\AIOT1\\Desktop\\emergency\\newemergencyclnt\\emergencyclnt.csproj": {}
+    "C:\\Users\\AIOT1\\Desktop\\emergency\\emergencyclnt\\emergencyclnt.csproj": {}
   },
   "projects": {
-    "C:\\Users\\AIOT1\\Desktop\\emergency\\newemergencyclnt\\emergencyclnt.csproj": {
+    "C:\\Users\\AIOT1\\Desktop\\emergency\\emergencyclnt\\emergencyclnt.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AIOT1\\Desktop\\emergency\\newemergencyclnt\\emergencyclnt.csproj",
+        "projectUniqueName": "C:\\Users\\AIOT1\\Desktop\\emergency\\emergencyclnt\\emergencyclnt.csproj",
         "projectName": "emergencyclnt",
-        "projectPath": "C:\\Users\\AIOT1\\Desktop\\emergency\\newemergencyclnt\\emergencyclnt.csproj",
+        "projectPath": "C:\\Users\\AIOT1\\Desktop\\emergency\\emergencyclnt\\emergencyclnt.csproj",
         "packagesPath": "C:\\Users\\AIOT1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AIOT1\\Desktop\\emergency\\newemergencyclnt\\obj\\",
+        "outputPath": "C:\\Users\\AIOT1\\Desktop\\emergency\\emergencyclnt\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\AIOT1\\AppData\\Roaming\\NuGet\\NuGet.Config",

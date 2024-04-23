@@ -1339,19 +1339,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\fbi54\\.nuget\\packages\\": {}
+    "C:\\Users\\AIOT1\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\fbi54\\OneDrive\\바탕 화면\\projectemergency\\emergencyclnt\\emergencyclnt.csproj",
+      "projectUniqueName": "C:\\Users\\AIOT1\\Desktop\\emergency\\newemergencyclnt\\emergencyclnt.csproj",
       "projectName": "emergencyclnt",
-      "projectPath": "C:\\Users\\fbi54\\OneDrive\\바탕 화면\\projectemergency\\emergencyclnt\\emergencyclnt.csproj",
-      "packagesPath": "C:\\Users\\fbi54\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\fbi54\\OneDrive\\바탕 화면\\projectemergency\\emergencyclnt\\obj\\",
+      "projectPath": "C:\\Users\\AIOT1\\Desktop\\emergency\\newemergencyclnt\\emergencyclnt.csproj",
+      "packagesPath": "C:\\Users\\AIOT1\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\AIOT1\\Desktop\\emergency\\newemergencyclnt\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\fbi54\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\AIOT1\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1371,11 +1371,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -1422,7 +1417,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
